@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: user
+server:
+  port: 9000
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    eureka-connection-idle-timeout-seconds: 3
+    registry-fetch-interval-seconds: 10
+

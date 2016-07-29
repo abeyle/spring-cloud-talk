@@ -1,0 +1,15 @@
+eureka:
+  image: albi/eureka
+  net: host
+service1:
+  image: albi/service1
+  net: host
+  environment:
+    EUREKA_CLIENT_SERVICEURL: http://192.168.99.100:8761/eureka/
+    SERVER_PORT: 8090
+apigateway:
+  image: albi/apigateway
+  net: host
+  environment:
+    EUREKA_CLIENT_SERVICEURL: http://192.168.99.100:8761/eureka/
+    SERVER_PORT: 8080

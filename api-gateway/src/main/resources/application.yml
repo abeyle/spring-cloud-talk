@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: api-gateway
+server:
+  port: 8070
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+zuul:
+  routes:
+    videos:
+      path: /videos/**
+      serviceId: video
+      retryable: true
+    users:
+      path: /users/**
+      serviceId: user
+      retryable: true
