@@ -1,4 +1,4 @@
 FROM albi/basecontainer:latest
-COPY target/service1*.jar /opt/service/lib/service.jar
-ENV SERVICE_NAME=service1
-ENV SERVICE_JAR=service.jar
+COPY target/user.jar /opt/service/lib/user.jar
+ENV SERVICE_NAME=user
+ENV SERVICE_JAR=user.jar

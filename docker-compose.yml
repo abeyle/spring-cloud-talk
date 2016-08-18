@@ -1,15 +1,18 @@
-eureka:
-  image: albi/eureka
-  net: host
-service1:
-  image: albi/service1
-  net: host
-  environment:
-    EUREKA_CLIENT_SERVICEURL: http://192.168.99.100:8761/eureka/
-    SERVER_PORT: 8090
-apigateway:
-  image: albi/apigateway
-  net: host
-  environment:
-    EUREKA_CLIENT_SERVICEURL: http://192.168.99.100:8761/eureka/
-    SERVER_PORT: 8080
+version: '2'
+services:
+  consul:
+    image: progrium/consul
+    restart: always
+    command: "/bin/start -server -bootstrap"
+    expose:
+     - "8400"
+     - "8500"
+     - "53/udp"
+  adminui:
+    image: albi/adminui
+    depends_on:
+      - consul
+    expose:
+     - "8080"
+    environment:
+    - "SPRING_CLOUD_CONSUL_HOST=consul"
